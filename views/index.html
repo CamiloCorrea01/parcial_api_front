@@ -8,23 +8,19 @@
 <body>
     <h1>Personajes de Star Wars</h1>
 
-    <!-- Formulario de búsqueda por nombre -->
     <div id="searchForm">
         <input type="text" id="characterName" placeholder="Buscar por nombre">
         <button onclick="searchCharacter()">Buscar por nombre</button>
     </div>
 
-    <!-- Botón para ver todos los personajes -->
     <button onclick="getAllCharacters()">Ver todos los personajes</button>
 
-    <!-- Contenedor para mostrar los resultados -->
     <div id="results"></div>
 
-    <!-- JavaScript dentro del archivo HTML -->
+
     <script>
         const apiUrl = 'https://starwars-n5ec-developuptcs-projects.vercel.app/';
 
-        // Función para obtener todos los personajes
         async function getAllCharacters() {
             const url = `${apiUrl}characters`;
 
@@ -55,7 +51,7 @@
             }
         }
 
-        // Función para buscar un personaje por nombre
+    
         async function searchCharacter() {
             const name = document.getElementById('characterName').value.trim();
             if (!name) {
