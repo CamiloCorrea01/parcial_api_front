@@ -29,7 +29,19 @@
             const url = `${apiUrl}characters`;
 
             try {
-                const response = await fetch(url);
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                });
+
+                // Verifica el estado de la respuesta
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status} - ${response.statusText}`);
+                }
+
                 const data = await response.json();
 
                 if (data.result && data.data.length > 0) {
@@ -39,7 +51,7 @@
                 }
             } catch (error) {
                 console.error("Error al obtener los personajes:", error);
-                document.getElementById('results').innerHTML = "<p>Error al obtener los personajes. Inténtalo de nuevo más tarde.</p>";
+                document.getElementById('results').innerHTML = `<p>Error al obtener los personajes: ${error.message}</p>`;
             }
         }
 
@@ -54,7 +66,19 @@
             const url = `${apiUrl}name/${name}`;
 
             try {
-                const response = await fetch(url);
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                });
+
+                // Verifica el estado de la respuesta
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status} - ${response.statusText}`);
+                }
+
                 const data = await response.json();
 
                 if (data.result && data.data.length > 0) {
